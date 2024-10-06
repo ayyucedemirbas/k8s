@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tensorflow-cnn-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tensorflow-cnn
+  template:
+    metadata:
+      labels:
+        app: tensorflow-cnn
+    spec:
+      containers:
+      - name: tensorflow-cnn-container
+        image: ayyuce/simple-tensorflow-cnn:latest
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
